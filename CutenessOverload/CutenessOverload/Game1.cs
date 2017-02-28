@@ -82,14 +82,15 @@ namespace CutenessOverload
 
             superdog4 = new Sprite(new Vector2(90, 20), // Start at x=-150, y=30
                                  superDogSheet,
-                                 new Rectangle(167, 0, 163, 170), // Use this part of the superdog texture
-                                 new Vector2(55, 90));
+                                 new Rectangle(0, 200, 160
+                                 , 383), // Use this part of the superdog texture
+                                 new Vector2(90, 90));
 
             superdog5 = new Sprite(new Vector2(90, 20), // Start at x=-150, y=30
                                  superDogSheet,
                                  new Rectangle(167, 0, 163, 170), // Use this part of the superdog texture
                                  new Vector2(20, 90));
-
+            //WOOOOO pointless text
             // Add any other initialization code here
         }
 
@@ -112,7 +113,31 @@ namespace CutenessOverload
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-            superdog.Rotation = superdog.Rotation + 0.01f;
+            superdog.Rotation = superdog.Rotation + 100;
+            superdog2.Rotation = superdog2.Rotation + 800;
+            superdog3.Rotation = superdog3.Rotation - .01f;
+            superdog4.Rotation = superdog4.Rotation + .01f;
+            superdog5.Rotation = superdog5.Rotation + 100000;
+            if (superdog.Location.X > 800)
+                superdog.Location = new Vector2(-100, 100);
+            if (superdog2.Location.X > 800)
+                superdog2.Location = new Vector2(-100, 100);
+            if (superdog3.Location.X > 800)
+                superdog3.Location = new Vector2(-100, 100);
+            if (superdog4.Location.X > 800)
+                superdog4.Location = new Vector2(-100, 100);
+            if (superdog5.Location.X > 800)
+                superdog5.Location = new Vector2(-100, 100);
+
+            /*
+            if (superdog.BoundingBoxRect.Intersects(superdog2.BoundingBoxRect))
+            {
+                superdog.Velocity *= -1;
+            }
+            */
+
+
+
             // TODO: Add your update logic here
             superdog.Update(gameTime);  // Update the superdog so he moves
             superdog2.Update(gameTime);
