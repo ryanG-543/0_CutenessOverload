@@ -65,15 +65,15 @@ namespace CutenessOverload
 
             superDogSheet = Content.Load<Texture2D>("superdog");
 
-            superdog = new Sprite(new Vector2(50, 30), // Start at x=-150, y=30
+            superdog = new Sprite(new Vector2(250, 30), // Start at x=-150, y=30
                                   superDogSheet, 
                                   new Rectangle(0, 0, 163, 170), // Use this part of the superdog texture
-                                  new Vector2(90, 20));
+                                  new Vector2(0, 120));
 
-            superdog2 = new Sprite(new Vector2(90, 20), // Start at x=-150, y=30
+            superdog2 = new Sprite(new Vector2(90, 400), // Start at x=-150, y=30
                                   superDogSheet,
                                   new Rectangle(167, 0, 163, 170), // Use this part of the superdog texture
-                                  new Vector2(70, 40));
+                                  new Vector2(0, -600));
 
             superdog3 = new Sprite(new Vector2(90, 20), // Start at x=-150, y=30
                                  superDogSheet,
@@ -113,11 +113,17 @@ namespace CutenessOverload
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-            superdog.Rotation = superdog.Rotation + 100;
-            superdog2.Rotation = superdog2.Rotation + 800;
+            //superdog.Rotation = superdog.Rotation + 100;
             superdog3.Rotation = superdog3.Rotation - .01f;
             superdog4.Rotation = superdog4.Rotation + .01f;
-            superdog5.Rotation = superdog5.Rotation + 100000;
+            superdog5.Rotation = superdog5.Rotation + 100000000;
+
+            superdog2.Velocity += new Vector2(0, 18);
+
+            if (superdog2.Location.Y > this.Window.ClientBounds.Height-superdog2.BoundingBoxRect.Height)
+                superdog2.Velocity = new Vector2(0, -600);
+
+            /*
             if (superdog.Location.X > 800)
                 superdog.Location = new Vector2(-100, 100);
             if (superdog2.Location.X > 800)
@@ -128,6 +134,9 @@ namespace CutenessOverload
                 superdog4.Location = new Vector2(-100, 100);
             if (superdog5.Location.X > 800)
                 superdog5.Location = new Vector2(-100, 100);
+            */
+            if (superdog.Location.Y > 400 || superdog.Location.Y < 0)
+                superdog.Velocity *= new Vector2(1, -1);
 
             /*
             if (superdog.BoundingBoxRect.Intersects(superdog2.BoundingBoxRect))
